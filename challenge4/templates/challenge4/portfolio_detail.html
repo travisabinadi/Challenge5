@@ -1,0 +1,11 @@
+{% extends 'challenge4/base.html' %}
+{% block body %}
+    <a href="{% url 'portfolio' %}" class="back_button btn btn-info">Back</a>
+    <div class="container bg-dark">
+        <div class="detail_display">
+            <h1>{{ portfolio_item.item_name }}</h1>
+            <h3>{{ portfolio_item.item_description }}</h3>
+            <img class="card" height="200px" width="400px" src="{{ portfolio_item.item_image }}"/>
+        </div>
+    </div>
+{% endblock %}

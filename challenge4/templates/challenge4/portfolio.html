@@ -1,0 +1,49 @@
+{% extends 'challenge4/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+</head>
+<body>
+    {% block body %}
+        <h1>Portfolio</h1>
+        <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Project
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in portfolio_list %}
+                        <tr>
+                            <td>
+                                {{ item.item_description }}
+                            </td>
+                            <td>
+                                {{ item.item_description }}
+                            </td>
+                            <td>
+                                <img class="card" height="100px" width="200px" src="{{ item.item_image }}"/>
+                            </td>
+                            <td>
+                                <a href="{% url 'portfolio_detail' item.item_id %}" class="btn btn-info">Details</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
+</body>
+</html>

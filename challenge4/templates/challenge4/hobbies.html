@@ -1,0 +1,49 @@
+{% extends 'challenge4/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hobbies</title>
+</head>
+<body>
+        {% block body %}
+            <h1>Hobbies</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Hobby
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in hobby_list %}
+                        <tr>
+                            <td>
+                                {{ item.hobby_name }}
+                            </td>
+                            <td>
+                                {{ item.hobby_description }}
+                            </td>
+                            <td>
+                                <img class="card" height="100px" width="200px" src="{{ item.hobby_image }}"/>
+                            </td>
+                            <td>
+                                <a href="{% url 'hobbies_detail' item.hobby_id %}" class="btn btn-info">Details</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'challenge4/base.html' %}
+{% block body %}
+    <a href="{% url 'hobbies' %}" class="back_button btn btn-info">Back</a>
+    <div class="container bg-dark">
+        <div class="detail_display">
+            <h1>{{ hobby.hobby_name }}</h1>
+            <h3>{{ hobby.hobby_description }}</h3>
+            <img class="card" height="200px" width="400px" src="{{ hobby.hobby_image }}"/>
+        </div>
+    </div>
+{% endblock %}
