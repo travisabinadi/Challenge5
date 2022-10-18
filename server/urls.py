@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from challenge4 import urls
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('challenge4/', include('challenge4.urls'))
+    path('challenge4/', include('challenge4.urls'), name='challenge4'),
+    path('register/', user_views.register, name='register')
 ]
