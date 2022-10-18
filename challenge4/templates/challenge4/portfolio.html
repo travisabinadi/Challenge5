@@ -8,6 +8,7 @@
 <body>
     {% block body %}
         <h1>Portfolio</h1>
+        <a href="{% url 'add_portfolio_item' %}" class="btn btn-success">Add Item</a>
         <table>
                 <thead>
                     <tr>
@@ -38,6 +39,8 @@
                                 <img class="card" height="100px" width="200px" src="{{ item.item_image }}"/>
                             </td>
                             <td>
+                                <a href="{% url 'update_portfolio_item' item.item_id %}" class="btn btn-success">Update</a>
+                                <a href="{% url 'delete_portfolio_item' item.item_id %}" class="btn btn-danger">Delete</a>
                                 <a href="{% url 'portfolio_detail' item.item_id %}" class="btn btn-info">Details</a>
                             </td>
                         </tr>

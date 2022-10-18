@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from challenge4.models import PortfolioItem, Hobby
+from .forms import PortfolioItemForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def nav_bar():
     return
@@ -36,5 +39,30 @@ def portfolio(request):
     return render(request, 'challenge4/portfolio.html', context)
 
 def contact(request):
-    context = {}
-    return render(request, 'challenge4/contact.html', context)
+    return render(request, 'challenge4/contact.html', {})
+
+def add_portfolio_item(request):
+    form = PortfolioItemForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio'))
+    return render(request, 'challenge4/portfolio_item_form.html', context={'form': form})
+
+def update_portfolio_item(request, item_id):
+    item = PortfolioItem.objects.get(item_id=item_id)
+    form = PortfolioItemForm(request.POST or None, instance=item)
+
+    if form.is_valid():
+        form.save()
+        return redirect(reverse('portfolio'))
+
+    return render(request, 'challenge4/portfolio_item_form.html', context={'form': form, 'item': item})
+
+def delete_portfolio_item(request, item_id):
+    item = PortfolioItem.objects.get(item_id=item_id)
+
+    if request.method == 'POST':
+        item.delete()
+        return redirect(reverse('portfolio'))
+
+    return render(request, 'challenge4/portfolio_item_delete.html', context={'item': item})

@@ -49,6 +49,10 @@ a {
     text-decoration: none;
 }
 
+.btn {
+    margin-bottom: 5px;
+}
+
 a:hover, .nav-item:hover, .navbar-brand:hover
 {
     color: #81d4fa;
